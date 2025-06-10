@@ -5,6 +5,7 @@ const createLeaveRequest = async (leaveRequestData) => {
   const assignment = await ShiftAssignment.findById(
     leaveRequestData.shift_assignment_id
   );
+  console.log("assignment:", assignment);
   if (!assignment) {
     throw new Error("Shift assignment not found");
   }
