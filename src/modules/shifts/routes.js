@@ -4,7 +4,6 @@ const router = express.Router();
 const shiftsController = require("./controller");
 const { roleMiddleware } = require("../../middlewares/auth");
 
-// Define routes for shifts
 router.get("/", roleMiddleware(["head_nurse"]), shiftsController.getAllShifts);
 router.post("/", roleMiddleware(["head_nurse"]), shiftsController.createShift);
 router.get(

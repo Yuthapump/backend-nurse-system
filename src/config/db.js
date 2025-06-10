@@ -18,7 +18,6 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
-// ใช้ .promise() เพื่อรองรับ async/await
 const db = pool.promise();
 
 module.exports = db;

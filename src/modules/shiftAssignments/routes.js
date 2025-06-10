@@ -9,7 +9,6 @@ router.get(
   shiftAssignmentController.getMySchedule
 );
 
-// Define routes for shift assignments
 router.post(
   "/",
   roleMiddleware(["head_nurse"]),

@@ -6,8 +6,6 @@ const { createToken } = require("../../utils/jwt");
 
 const AuthService = {
   async register(username, email, password, role) {
-    // const { username, email, password, role } = userData;
-
     if (!username || !email || !password || !role) {
       throw new Error("All fields are required");
     }

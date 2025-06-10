@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
 };
 
 exports.getProfile = async (req, res) => {
-  const userId = req.user.userId; // Assuming user ID is stored in req.user by auth middleware
+  const userId = req.user.userId;
   try {
     const user = await AuthService.getUserById(userId);
     res.status(200).json({ user });
