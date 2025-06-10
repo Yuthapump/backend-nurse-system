@@ -16,6 +16,14 @@ const LeaveRequest = {
     return rows[0];
   },
 
+  async findByAssignmentId(shift_assignment_id) {
+    const [rows] = await db.query(
+      "SELECT * FROM leave_requests WHERE shift_assignment_id = ?",
+      [shift_assignment_id]
+    );
+    return rows[0];
+  },
+
   async findAll() {
     const [rows] = await db.query("SELECT * FROM leave_requests");
     return rows;
