@@ -2,7 +2,6 @@ const LeaveRequest = require("./model");
 const ShiftAssignment = require("../shiftAssignments/model");
 
 const createLeaveRequest = async (leaveRequestData) => {
-  // Check UserId
   const assignment = await ShiftAssignment.findById(
     leaveRequestData.shift_assignment_id
   );

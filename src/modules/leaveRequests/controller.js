@@ -9,6 +9,7 @@ exports.createLeaveRequest = async (req, res) => {
     );
     res.status(201).json(newLeaveRequest);
   } catch (error) {
+    console.error("Create LeaveRequest Error:", error);
     res.status(500).json({ message: "Error creating leave request", error });
   }
 };
