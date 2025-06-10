@@ -36,7 +36,12 @@ const getShiftAssignmentById = async (id) => {
 
 const getScheduleByNurseId = async (nurseId) => {
   const [schedule] = await db.query(
-    `SELECT s.id AS shiftId, s.date, s.start_time, s.end_time
+    `SELECT 
+        sa.id AS shift_assignment_id, 
+        s.id AS shiftId, 
+        s.date, 
+        s.start_time, 
+        s.end_time
      FROM shift_assignments sa
      JOIN shifts s ON sa.shift_id = s.id
      WHERE sa.user_id = ?
