@@ -2,6 +2,15 @@ const LeaveRequest = require("./model");
 const ShiftAssignment = require("../shiftAssignments/model");
 
 const createLeaveRequest = async (leaveRequestData) => {
+  const existing = await LeaveRequest.findByAssignmentId(
+    leaveRequestData.shift_assignment_id
+  );
+  if (existing) {
+    return {
+      message: "Leave request for this shift assignment already exists",
+      existing,
+    };
+  }
   const assignment = await ShiftAssignment.findById(
     leaveRequestData.shift_assignment_id
   );
