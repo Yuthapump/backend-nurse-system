@@ -29,13 +29,13 @@ const AuthService = {
     return { id: result.insertId, username, email, role };
   },
 
-  async login(username, password) {
-    if (!username || !password) {
+  async login(email, password) {
+    if (!email || !password) {
       throw new Error("Missing username or password");
     }
 
-    const [users] = await db.query("SELECT * FROM users WHERE name = ?", [
-      username.trim(),
+    const [users] = await db.query("SELECT * FROM users WHERE email = ?", [
+      email.trim(),
     ]);
 
     const user = users[0];
