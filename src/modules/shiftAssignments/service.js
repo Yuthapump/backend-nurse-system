@@ -1,3 +1,4 @@
+// service.js
 const db = require("../../config/db");
 const ShiftAssignment = require("./model");
 
@@ -35,20 +36,11 @@ const getShiftAssignmentById = async (id) => {
 };
 
 const getScheduleByNurseId = async (nurseId) => {
-  const [schedule] = await db.query(
-    `SELECT 
-        sa.id AS shift_assignment_id, 
-        s.id AS shiftId, 
-        s.date, 
-        s.start_time, 
-        s.end_time
-     FROM shift_assignments sa
-     JOIN shifts s ON sa.shift_id = s.id
-     WHERE sa.user_id = ?
-     ORDER BY s.date ASC`,
-    [nurseId]
-  );
-  return schedule;
+  try {
+    return await ShiftAssignment.getScheduleByNurseId(nurseId);
+  } catch (error) {
+    throw new Error("Error fetching schedule: " + error.message);
+  }
 };
 
 // Update a shift assignment
